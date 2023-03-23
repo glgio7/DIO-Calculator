@@ -1,33 +1,40 @@
 import styled from "styled-components";
 
 export const ButtonContainer = styled.button`
-  flex: 1;
+	width: 25%;
+	text-align: center;
+	margin: 3px;
 
-  padding: 20px;
-  margin: 3px;
+	cursor: pointer;
 
-  cursor: pointer;
-  
-  border: none;
-  border-radius: 6px;
-  
-  background-color: #f08000;
-  color: #ffffff;
-  
-  font-size: 24px;
-  font-weight: 700;
-  
-  transition: all ease-in-out 200ms;
+	border: none;
+	border-radius: 6px;
 
-  &:hover {
-    background-color: rgba(240, 128, 0, 0.75);
-  }
+	background-color: #00c3ff;
+	color: #ffffff;
 
-  &:nth-of-type(4n) {
-    background-color: #252525;
+	font-size: 24px;
+	font-weight: 700;
 
-    &:hover {
-      background-color: rgba(25, 161, 240, 0.85);
-    }
-  }
+	transition: all 300ms;
+
+	&:hover {
+		background-color: rgba(25, 161, 240, 0.85);
+	}
+
+	&:nth-of-type(4n) {
+		background-color: #252525;
+
+		&:hover {
+			color: #252525;
+			background-color: #ffffff;
+		}
+	}
+
+	@media screen and (max-width: 900px) {
+		padding: 0;
+		flex: initial;
+		width: 25%;
+		text-align: center;
+	}
 `;

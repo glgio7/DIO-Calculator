@@ -7,7 +7,12 @@ const GlobalCSS = createGlobalStyle`
 
     box-sizing: border-box;
     
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Montserrat Alternates', sans-serif;
+  }
+
+  html, body{
+    height: 100%;
+    width: 100%;
   }
 `;
 
