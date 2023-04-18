@@ -4,8 +4,8 @@ import { Container, Content, Header, Row } from "./styles";
 import { useState } from "react";
 
 const App = () => {
-	const [currentNumber, setCurrentNumber] = useState("0");
-	const [firstNumber, setFirstNumber] = useState("0");
+	const [currentNumber, setCurrentNumber] = useState();
+	const [firstNumber, setFirstNumber] = useState();
 	const [operation, setOperation] = useState("");
 
 	const handleOnClear = () => {
@@ -15,31 +15,21 @@ const App = () => {
 	};
 
 	const handleAddNumber = (num) => {
-		setCurrentNumber((prev) => `${prev === "0" ? "" : prev}${num}`);
+		if (currentNumber) {
+			setCurrentNumber((prev) => `${prev}${num}`);
+		} else setCurrentNumber(num);
 	};
 
 	const handleMultNumbers = () => {
-		if (firstNumber === "0") {
-			setFirstNumber(String(currentNumber));
-			setCurrentNumber(" ");
-			setOperation("x");
-		} else {
-			const sum = Number(firstNumber) * Number(currentNumber);
-			setCurrentNumber(String(sum));
-			setOperation("");
-		}
+		setFirstNumber(currentNumber);
+		setOperation("x");
+		setCurrentNumber(0);
 	};
 
 	const handleDivNumbers = () => {
-		if (firstNumber === "0") {
-			setFirstNumber(String(currentNumber));
-			setCurrentNumber(" ");
-			setOperation("/");
-		} else {
-			const sum = Number(firstNumber) / Number(currentNumber);
-			setCurrentNumber(String(sum));
-			setOperation("");
-		}
+		setFirstNumber(currentNumber);
+		setOperation("/");
+		setCurrentNumber(0);
 	};
 
 	const handleSumNumbers = () => {
@@ -76,10 +66,10 @@ const App = () => {
 					handleMinusNumbers();
 					break;
 				case "x":
-					handleMultNumbers();
+					setCurrentNumber(currentNumber * firstNumber);
 					break;
 				case "/":
-					handleDivNumbers();
+					setCurrentNumber(currentNumber / firstNumber);
 					break;
 				default:
 					break;
@@ -94,7 +84,7 @@ const App = () => {
 			</Header>
 			<Container>
 				<Content>
-					<Input value={currentNumber} />
+					<Input value={currentNumber !== 0 ? currentNumber : ""} />
 					<div className="wrapper">
 						<Row>
 							<Button label="+" onClick={handleSumNumbers} />
@@ -103,9 +93,9 @@ const App = () => {
 							<Button label="X" onClick={handleMultNumbers} />
 						</Row>
 						<Row>
-							<Button label="7" onClick={() => handleAddNumber("7")} />
-							<Button label="8" onClick={() => handleAddNumber("8")} />
-							<Button label="9" onClick={() => handleAddNumber("9")} />
+							<Button label="7" onClick={() => handleAddNumber(7)} />
+							<Button label="8" onClick={() => handleAddNumber(8)} />
+							<Button label="9" onClick={() => handleAddNumber(9)} />
 							<Button label="C" onClick={handleOnClear} />
 						</Row>
 						<Row>
