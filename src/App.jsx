@@ -9,8 +9,8 @@ const App = () => {
 	const [operation, setOperation] = useState("");
 
 	const handleOnClear = () => {
-		setCurrentNumber("0");
-		setFirstNumber("0");
+		setCurrentNumber(0);
+		setFirstNumber();
 		setOperation("");
 	};
 
@@ -33,43 +33,31 @@ const App = () => {
 	};
 
 	const handleSumNumbers = () => {
-		if (firstNumber === "0") {
-			setFirstNumber(String(currentNumber));
-			setCurrentNumber(" ");
-			setOperation("+");
-		} else {
-			const sum = Number(firstNumber) + Number(currentNumber);
-			setCurrentNumber(String(sum));
-			setOperation("");
-		}
+		setFirstNumber(currentNumber);
+		setOperation("+");
+		setCurrentNumber(0);
 	};
 
 	const handleMinusNumbers = () => {
-		if (firstNumber === "0") {
-			setFirstNumber(String(currentNumber));
-			setCurrentNumber(" ");
-			setOperation("-");
-		} else {
-			const sum = Number(firstNumber) - Number(currentNumber);
-			setCurrentNumber(String(sum));
-			setOperation("");
-		}
+		setFirstNumber(currentNumber);
+		setOperation("-");
+		setCurrentNumber(0);
 	};
 
 	const handleEquals = () => {
 		if (firstNumber !== "0" && operation !== "" && currentNumber !== "0") {
 			switch (operation) {
 				case "+":
-					handleSumNumbers();
+					setCurrentNumber(currentNumber + firstNumber);
 					break;
 				case "-":
-					handleMinusNumbers();
+					setCurrentNumber(firstNumber - currentNumber);
 					break;
 				case "x":
-					setCurrentNumber(currentNumber * firstNumber);
+					setCurrentNumber(firstNumber * currentNumber);
 					break;
 				case "/":
-					setCurrentNumber(currentNumber / firstNumber);
+					setCurrentNumber(firstNumber / currentNumber);
 					break;
 				default:
 					break;
