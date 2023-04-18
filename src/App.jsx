@@ -87,18 +87,18 @@ const App = () => {
 							<Button label="C" onClick={handleOnClear} />
 						</Row>
 						<Row>
-							<Button label="4" onClick={() => handleAddNumber("4")} />
-							<Button label="5" onClick={() => handleAddNumber("5")} />
-							<Button label="6" onClick={() => handleAddNumber("6")} />
+							<Button label="4" onClick={() => handleAddNumber(4)} />
+							<Button label="5" onClick={() => handleAddNumber(5)} />
+							<Button label="6" onClick={() => handleAddNumber(6)} />
 							<Button
 								label="."
 								onClick={() => setCurrentNumber(currentNumber.concat("."))}
 							/>
 						</Row>
 						<Row>
-							<Button label="1" onClick={() => handleAddNumber("1")} />
-							<Button label="2" onClick={() => handleAddNumber("2")} />
-							<Button label="3" onClick={() => handleAddNumber("3")} />
+							<Button label="1" onClick={() => handleAddNumber(1)} />
+							<Button label="2" onClick={() => handleAddNumber(2)} />
+							<Button label="3" onClick={() => handleAddNumber(3)} />
 							<Button label="=" onClick={handleEquals} />
 						</Row>
 					</div>
