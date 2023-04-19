@@ -1,23 +1,24 @@
+import * as S from "./styles";
+import React from "react";
+import { useState } from "react";
 import Input from "./components/Input";
 import Header from "./components/Header";
 import Button from "./components/Button";
-import * as S from "./styles";
-import { useState } from "react";
 
 const App = () => {
-	const [currentNumber, setCurrentNumber] = useState();
-	const [firstNumber, setFirstNumber] = useState();
+	const [currentNumber, setCurrentNumber] = useState<number>();
+	const [firstNumber, setFirstNumber] = useState<number>();
 	const [operation, setOperation] = useState("");
 
 	const handleOnClear = () => {
 		setCurrentNumber(0);
-		setFirstNumber();
+		setFirstNumber(undefined);
 		setOperation("");
 	};
 
-	const handleAddNumber = (num) => {
+	const handleAddNumber = (num: number) => {
 		if (currentNumber) {
-			setCurrentNumber((prev) => `${prev}${num}`);
+			setCurrentNumber((prev) => Number(`${prev}${num}`));
 		} else setCurrentNumber(num);
 	};
 
@@ -53,15 +54,15 @@ const App = () => {
 					setOperation("");
 					break;
 				case "-":
-					setCurrentNumber(firstNumber - currentNumber);
+					setCurrentNumber(firstNumber! - currentNumber!);
 					setOperation("");
 					break;
 				case "x":
-					setCurrentNumber(firstNumber * currentNumber);
+					setCurrentNumber(firstNumber! * currentNumber!);
 					setOperation("");
 					break;
 				case "/":
-					setCurrentNumber(firstNumber / currentNumber);
+					setCurrentNumber(firstNumber! / currentNumber!);
 					setOperation("");
 					break;
 				default:
@@ -75,7 +76,7 @@ const App = () => {
 			<Header />
 			<S.Container>
 				<S.Content>
-					<Input value={currentNumber !== 0 ? currentNumber : ""} />
+					<Input value={currentNumber} />
 					<div className="wrapper">
 						<S.Row>
 							<Button label="+" onClick={handleSumNumbers} />
@@ -95,7 +96,11 @@ const App = () => {
 							<Button label="6" onClick={() => handleAddNumber(6)} />
 							<Button
 								label="."
-								onClick={() => setCurrentNumber(currentNumber.concat("."))}
+								onClick={() =>
+									setCurrentNumber(
+										Number(currentNumber?.toString().concat("."))
+									)
+								}
 							/>
 						</S.Row>
 						<S.Row>
