@@ -14,6 +14,10 @@ const GlobalCSS = createGlobalStyle`
     height: 100%;
     width: 100%;
   }
+
+  body{
+	background-color: #0048a4;
+  }
 `;
 
 export default GlobalCSS;

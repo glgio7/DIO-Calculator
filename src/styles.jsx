@@ -1,32 +1,15 @@
 import styled from "styled-components";
 
-export const Header = styled.header`
-	width: 100%;
-	height: 36px;
-	background-color: #001fa4;
+export const Container = styled.main`
 	display: flex;
-	align-items: center;
+	flex-direction: column;
 	justify-content: center;
-
-	span {
-		font-weight: bold;
-		color: #fff;
-		font-size: 1.5rem;
-	}
-`;
-
-export const Container = styled.div`
 	width: 100%;
-	height: 100vh;
-
-	background: #0048a4;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	height: calc(100vh - 36px);
 `;
 
 export const Content = styled.div`
+	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -38,9 +21,6 @@ export const Content = styled.div`
 
 	.wrapper {
 		height: 70%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
 	}
 `;
 
